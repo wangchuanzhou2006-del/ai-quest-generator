@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\QuestGenerationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', function () {
         return view('home');
     })->name('home');
+
+    Route::get('/quests/generate', [QuestGenerationController::class, 'create'])->name('quests.generate.create');
+    Route::post('/quests/generate', [QuestGenerationController::class, 'store'])->name('quests.generate.store');
+    Route::get('/quests/{quest}', [QuestGenerationController::class, 'show'])->name('quests.show');
 
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });

@@ -6,6 +6,8 @@
         <p>欢迎，{{ auth()->user()->name }}。</p>
         <p class="muted">当前邮箱：{{ auth()->user()->email }}</p>
 
+        <a class="button" href="{{ route('quests.generate.create') }}">生成新的游戏任务</a>
+
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button type="submit">退出登录</button>
